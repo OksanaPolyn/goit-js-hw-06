@@ -12,20 +12,21 @@ const refs = {
   refs.loginForm.addEventListener("submit", onLoginFormSubmit);
   
   function onLoginFormSubmit(e) {
+    e.preventDefault();
     const {
       currentTarget: form,
       currentTarget: {
         elements: { email, password },
       },
     } = e;
-  
-    e.preventDefault();
-    validateLoginForm(email.value, password.value) && form.reset();
+    
+  //validateLoginForm(email.value, password.value) && form.reset();
   }
   
   function validateLoginForm(email, password) {
     if (email === "" || password === "") {
       alert("Заповніть будь ласка всі поля!");
+      return;
     }
   
     console.log({ email, password });
